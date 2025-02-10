@@ -5,42 +5,54 @@
         static void Main(string[] args)
         {
             Console.WriteLine("How much coins:");
-            int coins = int.Parse(Console.ReadLine());
-            int five = coins / 50;
-            coins -= five * 50;
-            int two = coins / 20;
-            coins -= two * 20;
-            int ten = coins / 10;
-            coins -= ten * 10;
-            int five0 = coins / 5;
-            coins -= five0 * 5;
-            int two0 = coins / 2;
-            coins -= two0 * 2;
-            int one = coins;
+            const int one = 1, two = 2, five = 5, ten = 10, twenty = 20, fifty = 50;
+            int sum = int.Parse(Console.ReadLine());
+            int centAmmount = 0;
             Console.WriteLine("You have: ");
-            if (five > 0)
+            if (sum >= fifty)
             {
-                Console.WriteLine($"{five} - 50 cent coins");
+                centAmmount = sum / fifty;
+                Console.WriteLine("50 sendised: " + centAmmount);
             }
-            else if (two > 0)
+
+            if (sum >= twenty)
             {
-                Console.WriteLine($"{two} - 20 cent coins");
+                sum = sum - centAmmount * fifty;
+                centAmmount = sum / twenty;
+                Console.WriteLine("20 sendised: " + centAmmount);
             }
-            else if (ten > 0)
+
+            if (sum >= ten)
             {
-                Console.WriteLine($"{ten} - 10 cent coins");
+                sum = sum - centAmmount * twenty;
+                centAmmount = sum / ten;
+                Console.WriteLine("10 sendised: " + centAmmount);
             }
-            else if (five0 > 0)
+
+            if (sum >= five)
             {
-                Console.WriteLine($"{five0} - 5 cent coins");
+                sum = sum - centAmmount * ten;
+                centAmmount = sum / five;
+                Console.WriteLine("5 sendised: " + centAmmount);
             }
-            else if (two0 > 0)
+
+            if (sum >= two)
             {
-                Console.WriteLine($"{two0} - 2 cent coins");
+                sum = sum - centAmmount * five;
+                centAmmount = sum / two;
+                Console.WriteLine("2 sendised: " + centAmmount);
             }
-            else if (one > 0)
+
+            if (sum >= one)
             {
-                Console.WriteLine($"{one} - 1 cent coins");
+                sum = sum - centAmmount * two;
+                centAmmount = sum / one;
+                Console.WriteLine("1 sendised: " + centAmmount);
+            }
+
+            else
+            {
+                Console.WriteLine("Rohkem ei ole");
             }
         }
     }
